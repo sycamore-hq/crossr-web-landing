@@ -2,7 +2,7 @@
 
 Public front door for CrossR. Links out to the three products. Owns no skill law, no loop law, no harness spec.
 
-**Dogfood is live (split-08).** Product remotes consume [`crossr-harness`](https://github.com/sycamore-hq/crossr-harness) `v0`. This remote still owns no law.
+**Dogfood is live (split-08).** Product remotes consume [`crossr-harness`](https://github.com/sycamore-hq/crossr-harness) `v0`. **Graphs (split-09)** live in [crossr-loops `graphs/`](https://github.com/sycamore-hq/crossr-loops/tree/main/graphs) — topology, not a runtime; SKILL.md stays the law. Pin `loops = "v0"` does not include them. This remote still owns no law.
 
 See [MIGRATION.md](MIGRATION.md).
 

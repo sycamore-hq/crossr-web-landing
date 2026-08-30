@@ -47,3 +47,8 @@ mdBook is a door. Chapter bodies are links; SUMMARY TOC is unchanged.
 ## Consumers
 
 Live marketing + docs URL remains https://sycamore-hq.github.io/crossr-skills/ until Pages move. This remote is not yet the public host.
+
+## Graphs (split-09)
+
+Topology lives in [`crossr-loops/graphs/`](https://github.com/sycamore-hq/crossr-loops/tree/main/graphs). This remote does not copy it. Pin `loops = "v0"` does not include graphs. Pages still off. No custom domain.
+
