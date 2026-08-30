@@ -9,7 +9,7 @@ History stays on skills. This remote is a snapshot plus new work.
 | Source SHA | `9ff577e6c2279bf4f0d0617417fb094e322985d5` (`main` at copy, after split-04) |
 | Unit | split-05 |
 | Method | clean copy of `site/` (byte-identical). `book/` rewritten as links — not a second spec. |
-| Skills copies | kept until split-07 (dual-publish, then delete) |
+| Skills copies | deleted from the catalog in split-07. Pages workflow removed; last skills deploy frozen. This remote's Pages is not enabled. |
 
 Do not treat this SHA as a lockfile pin. Landing owns no law and is not a pin target.
 

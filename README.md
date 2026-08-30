@@ -2,22 +2,28 @@
 
 Public front door for CrossR. Links out to the three products. Owns no skill law, no loop law, no harness spec.
 
-**Extract in progress (split-05).** Zola `site/` copied from `sycamore-hq/crossr-skills`. mdBook rewritten as **links**. See [MIGRATION.md](MIGRATION.md).
+**Dogfood is live (split-08).** Product remotes consume [`crossr-harness`](https://github.com/sycamore-hq/crossr-harness) `v0`. This remote still owns no law.
 
-- [crossr-skills](https://github.com/sycamore-hq/crossr-skills) — catalog
-- [crossr-loops](https://github.com/sycamore-hq/crossr-loops) — AVRIL / AXEL / BRICK / GAN
-- [crossr-harness](https://github.com/sycamore-hq/crossr-harness) — spec, bootstrap, dashboard
+See [MIGRATION.md](MIGRATION.md).
+
+- [crossr-skills](https://github.com/sycamore-hq/crossr-skills) — catalog (`skills = "v0-last-monolith"`)
+- [crossr-loops](https://github.com/sycamore-hq/crossr-loops) — AVRIL / AXEL / BRICK / GAN (`loops = "v0"`)
+- [crossr-harness](https://github.com/sycamore-hq/crossr-harness) — spec, bootstrap, dashboard (`v0`)
 
 Charter: [`skills-loops-harness-split.html`](https://github.com/sycamore-hq/crossr-skills/blob/main/docs/plans/skills-loops-harness-split.html).
 
 ## What's here
 
-- `site/` — Zola marketing site, byte-identical copy. `base_url` still names the skills Pages host; live Pages stay on skills until the cut.
+- `site/` — Zola marketing site. `base_url` still names the skills Pages host.
 - `book/` — mdBook TOC with links only (catalog → skills, pipeline → loops, bootstrap → harness). Not a second spec.
+
+## Pages
+
+Not enabled on this remote. Last skills deploy is frozen (workflow removed in split-07). Custom domain: none. Do not invent one.
 
 ## Not here
 
 - `SKILL.md`
 - `HARNESS-SPEC.md`
 - Loop law (AVRIL / AXEL / BRICK)
-- Deploy workflow (Pages still ship from `crossr-skills`)
+- Deploy workflow
