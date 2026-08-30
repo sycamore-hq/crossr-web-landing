@@ -1,6 +1,5 @@
 # Zola configuration — CrossR public door
-# Host (base_url) still the leftover until web-05.
-base_url = "https://scull7.github.io/crossr-skills"
+base_url = "https://sycamore-hq.github.io/crossr-web-landing"
 title = "CrossR"
 description = "CrossR is three remotes under Sycamore HQ: a portable skill catalog, the AVRIL/AXEL/BRICK loops, and a project harness. This page is the door. It owns no law."
 
