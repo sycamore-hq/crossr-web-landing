@@ -9,4 +9,4 @@ title = "CrossR"
 [output.html]
 git-repository-url = "https://github.com/sycamore-hq/crossr-web-landing"
 edit-url-template = "https://github.com/sycamore-hq/crossr-web-landing/edit/main/book/{path}"
-site-url = "/docs/"
+site-url = "/crossr-web-landing/docs/"
