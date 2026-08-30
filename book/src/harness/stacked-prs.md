@@ -2,4 +2,6 @@
 
 Ritual law lives in [`crossr-harness` HARNESS-SPEC.md](https://github.com/sycamore-hq/crossr-harness/blob/main/HARNESS-SPEC.md), not here.
 
-The catalog still has the longer chapter until split-07: [`book/src/harness/stacked-prs.md`](https://github.com/sycamore-hq/crossr-skills/blob/main/book/src/harness/stacked-prs.md).
+Every large effort is decomposed into tiny, reviewable PRs (< 10 minutes deep review). Traceability lives in `features.json` + `progress.md`.
+
+This page is a door. It does not duplicate the spec.
