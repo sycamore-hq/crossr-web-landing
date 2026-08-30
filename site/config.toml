@@ -1,8 +1,8 @@
-# Zola configuration — CrossR Skills Marketing Site
-# "Eternal Forge" — Agent skills forged in the Cross for functionally obsessed developers.
+# Zola configuration — CrossR public door
+# Copy truth (web-01). Palette still Eternal Forge until web-03. Host until web-05.
 base_url = "https://scull7.github.io/crossr-skills"
-title = "CrossR Skills"
-description = "High-quality agent skills and the complete harness for reliable, long-running AI coding agents. Forged in the Cross. Built for craft."
+title = "CrossR"
+description = "CrossR is three remotes under Sycamore HQ: a portable skill catalog, the AVRIL/AXEL/BRICK loops, and a project harness. This page is the door. It owns no law."
 
 # Generate a sitemap
 generate_sitemap = true
@@ -13,9 +13,9 @@ highlight_theme = "css"
 
 [extra]
 author = "Nathan Sculli"
-github = "https://github.com/scull7/crossr-skills"
-repo = "crossr-skills"
-# Brand colors (Eternal Forge palette)
+github = "https://github.com/sycamore-hq/crossr-web-landing"
+repo = "crossr-web-landing"
+# Brand colors (Eternal Forge palette — replaced in web-03)
 abyss = "#020617"
 gold = "#eab308"
 flame = "#f59e0b"

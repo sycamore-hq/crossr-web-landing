@@ -1,4 +1,4 @@
 +++
-title = "CrossR Skills • Eternal Forge"
+title = "CrossR"
 template = "index.html"
 +++
