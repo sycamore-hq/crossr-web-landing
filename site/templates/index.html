@@ -6,140 +6,115 @@
   <title>CrossR · catalog, loops, harness</title>
   <meta name="description" content="CrossR is three remotes under Sycamore HQ: a portable skill catalog, the AVRIL/AXEL/BRICK loops, and a project harness. This page is the door. It owns no law.">
   
-  <!-- Tailwind via CDN (consistent with HTML-first harness rule) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Google Fonts matching brand direction -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 
-  <!-- Favicon from brand -->
-  <link rel="icon" type="image/jpeg" href="brand/logo-icon.jpg">
+  <link rel="icon" type="image/svg+xml" href="brand/mark.svg">
 
   <style>
     :root {
-      --abyss: #020617;
-      --gold: #eab308;
-      --flame: #f59e0b;
-      --bright: #fde047;
+      --well: #171412;
+      --plaster: #F3EEE6;
+      --mile: #C4A882;
+      --fig: #9E4E36;
+      --leaf: #6A7348;
+      --canopy: #2E342C;
     }
 
     body {
-      font-family: 'Inter', system_ui, sans-serif;
+      font-family: Inter, system-ui, sans-serif;
     }
     
     .heading-font {
-      font-family: 'Oswald', 'Playfair Display', system_ui, sans-serif;
+      font-family: Fraunces, Georgia, serif;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
 
-    .forge-bg {
-      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    .door-bg {
+      background: #171412;
     }
 
-    .flame-gradient {
-      background: linear-gradient(90deg, #f59e0b, #eab308, #fde047);
+    .mile-gradient {
+      background: linear-gradient(90deg, #C4A882, #9E4E36, #6A7348);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .section-header {
-      font-family: 'Oswald', sans-serif;
+      font-family: Fraunces, Georgia, serif;
       letter-spacing: -0.025em;
     }
 
-    .nav-link {
-      transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .nav-link:hover {
-      color: #eab308;
-      transform: translateY(-1px);
-    }
+    .nav-link { transition: color 0.1s ease; }
+    .nav-link:hover { color: #C4A882; }
 
     .pillar-card {
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                  box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                  border-color 0.2s;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s;
     }
     .pillar-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      border-color: #eab308;
-    }
-
-    .forge-glow {
-      text-shadow: 0 0 20px rgb(234 179 8 / 0.5);
+      border-color: #C4A882;
     }
 
     .skill-pill {
-      background: #0f172a;
-      border: 1px solid #334155;
-      transition: all 0.15s ease;
+      background: #2E342C;
+      border: 1px solid #C4A88233;
+      transition: border-color 0.15s ease;
     }
-    .skill-pill:hover {
-      border-color: #eab308;
-      background: #1e2937;
-    }
+    .skill-pill:hover { border-color: #C4A882; }
 
     .code-block {
-      background: #0a0f1e;
-      border: 1px solid #1e2937;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #110f0d;
+      border: 1px solid #C4A88233;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
-    .flame-bar {
+    .fig-bar {
       height: 3px;
-      background: linear-gradient(to right, #f59e0b, #eab308, #fde047);
+      background: linear-gradient(to right, #9E4E36, #C4A882, #6A7348);
     }
 
-    .logo-glow {
-      filter: drop-shadow(0 0 30px rgb(234 179 8 / 0.35));
-    }
-
-    .eternal-badge {
-      background: linear-gradient(145deg, #1e2937, #0f172a);
-      border: 1px solid #475569;
+    .quiet-badge {
+      background: #2E342C;
+      border: 1px solid #C4A88233;
     }
   </style>
 </head>
-<body class="bg-[#020617] text-slate-200 forge-bg">
+<body class="bg-[#171412] text-[#F3EEE6] door-bg">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 border-b border-white/10 bg-[#020617]/95 backdrop-blur-lg">
+  <nav class="sticky top-0 z-50 border-b border-[#C4A882]/15 bg-[#171412]/95 backdrop-blur-lg">
     <div class="max-w-screen-2xl mx-auto px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-x-4">
-        <img 
-          src="brand/crossr-logo-horizontal.jpg" 
-          alt="CrossR"
-          class="h-9 w-auto logo-glow"
-        >
+        <img src="brand/mark.svg" alt="CrossR — low crown" class="h-9 w-9">
         <div class="hidden sm:block">
-          <span class="heading-font text-2xl tracking-[2px] text-[#eab308]">CROSSR</span>
+          <span class="heading-font text-2xl tracking-tight text-[#C4A882]">CrossR</span>
         </div>
       </div>
 
       <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
-        <a href="#pipeline" class="nav-link text-slate-300 hover:text-[#eab308]">Pipeline</a>
-        <a href="#remotes" class="nav-link text-slate-300 hover:text-[#eab308]">Remotes</a>
-        <a href="#skills" class="nav-link text-slate-300 hover:text-[#eab308]">Skills</a>
-        <a href="#start" class="nav-link text-slate-300 hover:text-[#eab308]">Get Started</a>
+        <a href="#pipeline" class="nav-link text-[#F3EEE6]/70 hover:text-[#C4A882]">Pipeline</a>
+        <a href="#remotes" class="nav-link text-[#F3EEE6]/70 hover:text-[#C4A882]">Remotes</a>
+        <a href="#skills" class="nav-link text-[#F3EEE6]/70 hover:text-[#C4A882]">Skills</a>
+        <a href="#start" class="nav-link text-[#F3EEE6]/70 hover:text-[#C4A882]">Get Started</a>
       </div>
 
       <div class="flex items-center gap-x-3">
         <a 
           href="https://github.com/sycamore-hq" 
           target="_blank"
-          class="flex items-center gap-x-2 px-5 py-2.5 rounded-2xl text-sm font-semibold bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all"
+          class="flex items-center gap-x-2 px-5 py-2.5 rounded-2xl text-sm font-semibold bg-white/5 hover:bg-white/10 border border-[#C4A882]/20 transition-all"
         >
           <i class="fa-brands fa-github"></i>
           <span class="hidden sm:inline">GitHub</span>
         </a>
         <a 
           href="docs/" 
-          class="flex items-center gap-x-2 px-6 py-2.5 rounded-2xl text-sm font-semibold bg-[#eab308] text-[#020617] hover:bg-[#fde047] transition-all"
+          class="flex items-center gap-x-2 px-6 py-2.5 rounded-2xl text-sm font-semibold bg-[#9E4E36] text-[#F3EEE6] hover:bg-[#C4A882] hover:text-[#171412] transition-all"
         >
           <span>Read the Docs</span>
         </a>
@@ -147,193 +122,188 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="pt-16 pb-20 md:pt-20 md:pb-24 border-b border-white/10 relative overflow-hidden">
+  <header class="pt-16 pb-20 md:pt-20 md:pb-24 border-b border-[#C4A882]/15 relative overflow-hidden">
     <div class="max-w-screen-2xl mx-auto px-8">
       <div class="max-w-4xl">
-        <div class="inline-flex items-center gap-x-2 px-5 py-1.5 rounded-3xl eternal-badge text-sm mb-8">
-          <span class="font-medium tracking-[1px] text-[#fde047]">SYCAMORE HQ</span>
-          <span class="text-white/40">•</span>
-          <span class="text-white/70">CrossR product door · owns no law</span>
+        <div class="inline-flex items-center gap-x-2 px-5 py-1.5 rounded-3xl quiet-badge text-sm mb-8">
+          <span class="font-medium tracking-[1px] text-[#C4A882]">SYCAMORE HQ</span>
+          <span class="text-[#F3EEE6]/40">•</span>
+          <span class="text-[#F3EEE6]/70">CrossR product door · owns no law</span>
         </div>
 
         <h1 class="text-6xl md:text-7xl lg:text-8xl leading-[0.92] font-bold tracking-tighter mb-6">
-          <span class="heading-font text-white">Plan until three roles BLESS.</span><br>
-          <span class="heading-font flame-gradient">Execute until AC have evidence.</span>
+          <span class="heading-font text-[#F3EEE6]">Plan until three roles BLESS.</span><br>
+          <span class="heading-font mile-gradient">Execute until AC have evidence.</span>
         </h1>
 
-        <p class="max-w-2xl text-2xl text-slate-400 font-light tracking-tight mb-6">
-          Stop agents from coding the wrong thing. <strong class="text-white">AVRIL</strong> triple-blesses the backlog;
-          <strong class="text-white">AXEL</strong> runs only that backlog through PETC + code GAN until done is honest.
+        <p class="max-w-2xl text-2xl text-[#F3EEE6]/70 font-light tracking-tight mb-6">
+          Stop agents from coding the wrong thing. <strong class="text-[#F3EEE6]">AVRIL</strong> triple-blesses the backlog;
+          <strong class="text-[#F3EEE6]">AXEL</strong> runs only that backlog through PETC + code GAN until done is honest.
           Loops compose catalog skills by name. The harness installs pinned tags.
         </p>
 
-        <div class="mb-10 font-mono text-sm md:text-base text-emerald-300/90 bg-black/40 border border-white/10 rounded-2xl px-5 py-4 overflow-x-auto">
-          Intent → <span class="text-[#fde047]">AVRIL</span> → Blessed Backlog → <span class="text-[#fde047]">AXEL</span> → Done
+        <div class="mb-10 font-mono text-sm md:text-base text-[#6A7348] bg-black/40 border border-[#C4A882]/15 rounded-2xl px-5 py-4 overflow-x-auto">
+          Intent → <span class="text-[#C4A882]">AVRIL</span> → Blessed Backlog → <span class="text-[#C4A882]">AXEL</span> → Done
         </div>
 
         <div class="flex flex-wrap gap-4">
           <a href="#start" 
-             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl bg-[#eab308] hover:bg-[#fde047] text-[#020617] font-semibold text-lg transition-all active:scale-[0.985]">
+             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl bg-[#9E4E36] hover:bg-[#C4A882] hover:text-[#171412] text-[#F3EEE6] font-semibold text-lg transition-all active:scale-[0.985]">
             <span>Bootstrap</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
           <a href="docs/pipeline/overview.html" 
-             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl border border-white/20 hover:bg-white/5 font-semibold text-lg transition-all">
+             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl border border-[#C4A882]/30 hover:bg-white/5 font-semibold text-lg transition-all">
             <span>Read the pipeline</span>
           </a>
           <a href="https://github.com/sycamore-hq/crossr-skills" target="_blank"
-             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl border border-white/20 hover:bg-white/5 font-semibold text-lg transition-all">
+             class="inline-flex items-center justify-center gap-x-3 px-8 py-4 rounded-2xl border border-[#C4A882]/30 hover:bg-white/5 font-semibold text-lg transition-all">
             <span>Catalog</span>
           </a>
         </div>
 
-        <div class="mt-8 text-sm text-white/50 flex items-center gap-x-2">
+        <div class="mt-8 text-sm text-[#F3EEE6]/50 flex items-center gap-x-2">
           <div class="flex -space-x-1">
-            <div class="w-2 h-2 rounded-full bg-[#eab308]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#f59e0b]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#fde047]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#9E4E36]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#C4A882]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#6A7348]"></div>
           </div>
           <span>18 public skills in the catalog · three product remotes · this page is the door</span>
         </div>
       </div>
     </div>
 
-    <div class="absolute bottom-0 left-0 right-0 h-px flame-bar"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px fig-bar"></div>
   </header>
 
-  <!-- PIPELINE -->
   <section id="pipeline" class="max-w-screen-2xl mx-auto px-8 pt-16 pb-8">
-    <div class="rounded-3xl border border-white/10 bg-[#0b0f1e] p-8 md:p-10">
-      <div class="text-[#eab308] uppercase tracking-[3px] text-xs font-semibold mb-3">Flagship loop</div>
+    <div class="rounded-3xl border border-[#C4A882]/15 bg-[#2E342C] p-8 md:p-10">
+      <div class="text-[#C4A882] uppercase tracking-[3px] text-xs font-semibold mb-3">Flagship loop</div>
       <h2 class="section-header text-4xl tracking-tighter font-semibold mb-4">AVRIL plans. AXEL executes.</h2>
-      <p class="text-slate-300 max-w-3xl mb-6">Hard planning stop after triple BLESS. Intake gate before any implementation. Small PRs. Agents do not mark done on vibes. Conductor text lives in <a href="https://github.com/sycamore-hq/crossr-loops" class="text-[#eab308] hover:text-[#fde047]">crossr-loops</a>. Topology (not a runtime): <a href="https://github.com/sycamore-hq/crossr-loops/tree/main/graphs" class="text-[#eab308] hover:text-[#fde047]">graphs/</a>. If a graph and a SKILL.md disagree, the skill wins. BRICK is the alternative, not a flagship node.</p>
+      <p class="text-[#F3EEE6]/80 max-w-3xl mb-6">Hard planning stop after triple BLESS. Intake gate before any implementation. Small PRs. Agents do not mark done on vibes. Conductor text lives in <a href="https://github.com/sycamore-hq/crossr-loops" class="text-[#C4A882] hover:text-[#F3EEE6]">crossr-loops</a>. Topology (not a runtime): <a href="https://github.com/sycamore-hq/crossr-loops/tree/main/graphs" class="text-[#C4A882] hover:text-[#F3EEE6]">graphs/</a>. If a graph and a SKILL.md disagree, the skill wins. BRICK is the alternative, not a flagship node.</p>
       <ol class="grid md:grid-cols-5 gap-3 text-sm">
-        <li class="rounded-2xl bg-black/40 border border-white/10 p-4"><span class="text-[#eab308] font-semibold">1. Intent</span><div class="text-slate-400 mt-1">Human goal</div></li>
-        <li class="rounded-2xl bg-black/40 border border-white/10 p-4"><span class="text-[#eab308] font-semibold">2. AVRIL</span><div class="text-slate-400 mt-1">PO → QA → CTO BLESS</div></li>
-        <li class="rounded-2xl bg-black/40 border border-white/10 p-4"><span class="text-[#eab308] font-semibold">3. Backlog</span><div class="text-slate-400 mt-1">Finite authorized set</div></li>
-        <li class="rounded-2xl bg-black/40 border border-white/10 p-4"><span class="text-[#eab308] font-semibold">4. AXEL</span><div class="text-slate-400 mt-1">PETC + code GAN</div></li>
-        <li class="rounded-2xl bg-black/40 border border-white/10 p-4"><span class="text-[#eab308] font-semibold">5. Done</span><div class="text-slate-400 mt-1">AC evidenced</div></li>
+        <li class="rounded-2xl bg-[#171412]/60 border border-[#C4A882]/15 p-4"><span class="text-[#C4A882] font-semibold">1. Intent</span><div class="text-[#F3EEE6]/60 mt-1">Human goal</div></li>
+        <li class="rounded-2xl bg-[#171412]/60 border border-[#C4A882]/15 p-4"><span class="text-[#C4A882] font-semibold">2. AVRIL</span><div class="text-[#F3EEE6]/60 mt-1">PO → QA → CTO BLESS</div></li>
+        <li class="rounded-2xl bg-[#171412]/60 border border-[#C4A882]/15 p-4"><span class="text-[#C4A882] font-semibold">3. Backlog</span><div class="text-[#F3EEE6]/60 mt-1">Finite authorized set</div></li>
+        <li class="rounded-2xl bg-[#171412]/60 border border-[#C4A882]/15 p-4"><span class="text-[#C4A882] font-semibold">4. AXEL</span><div class="text-[#F3EEE6]/60 mt-1">PETC + code GAN</div></li>
+        <li class="rounded-2xl bg-[#171412]/60 border border-[#C4A882]/15 p-4"><span class="text-[#C4A882] font-semibold">5. Done</span><div class="text-[#F3EEE6]/60 mt-1">AC evidenced</div></li>
       </ol>
-      <a href="docs/pipeline/overview.html" class="inline-flex mt-6 text-[#eab308] hover:text-[#fde047] font-medium gap-2 items-center">
+      <a href="docs/pipeline/overview.html" class="inline-flex mt-6 text-[#C4A882] hover:text-[#F3EEE6] font-medium gap-2 items-center">
         Pipeline docs <i class="fa-solid fa-arrow-right text-xs"></i>
       </a>
     </div>
   </section>
 
-  <!-- REMOTES -->
-  <section id="remotes" class="bg-[#0b0f1e] py-20 border-y border-white/10">
+  <section id="remotes" class="bg-[#2E342C] py-20 border-y border-[#C4A882]/15">
     <div class="max-w-screen-2xl mx-auto px-8">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-y-4">
         <div>
-          <div class="text-[#eab308] uppercase tracking-[3px] text-xs font-semibold mb-2">sycamore-hq</div>
+          <div class="text-[#C4A882] uppercase tracking-[3px] text-xs font-semibold mb-2">sycamore-hq</div>
           <h3 class="section-header text-5xl tracking-tighter">Four remotes. Acyclic.</h3>
         </div>
-        <p class="text-slate-400 max-w-md">Harness installs pinned tags of loops and skills. Loops reference skills by name. Skills never import loops or harness. This page links. It owns no law.</p>
+        <p class="text-[#F3EEE6]/60 max-w-md">Harness installs pinned tags of loops and skills. Loops reference skills by name. Skills never import loops or harness. This page links. It owns no law.</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <a href="https://github.com/sycamore-hq/crossr-skills" class="pillar-card group border border-white/10 bg-[#020617] rounded-3xl p-7 block">
-          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#eab308]/10 transition-colors">
-            <i class="fa-solid fa-book text-2xl text-[#eab308]"></i>
+        <a href="https://github.com/sycamore-hq/crossr-skills" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
+          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-book text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-skills</h4>
-          <p class="text-slate-400 text-[15px]">Portable catalog. 18 public skills. BRICK stages, writers, reviewers, <code class="text-slate-300">agent-harness</code>, <code class="text-slate-300">skill-evaluator</code>. Load without buying CrossR process.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">Portable catalog. 18 public skills. BRICK stages, writers, reviewers, <code class="text-[#F3EEE6]/80">agent-harness</code>, <code class="text-[#F3EEE6]/80">skill-evaluator</code>. Load without buying CrossR process.</p>
         </a>
 
-        <a href="https://github.com/sycamore-hq/crossr-loops" class="pillar-card group border border-white/10 bg-[#020617] rounded-3xl p-7 block">
-          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#eab308]/10 transition-colors">
-            <i class="fa-solid fa-stream text-2xl text-[#eab308]"></i>
+        <a href="https://github.com/sycamore-hq/crossr-loops" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
+          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-stream text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-loops</h4>
-          <p class="text-slate-400 text-[15px]">AVRIL, AXEL, BRICK conductor, rust-team-lead. JSON graphs under <code class="text-slate-300">graphs/</code> — topology, not a runtime. Pin <code class="text-slate-300">v0</code> does not include graphs.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">AVRIL, AXEL, BRICK conductor, rust-team-lead. JSON graphs under <code class="text-[#F3EEE6]/80">graphs/</code> — topology, not a runtime. Pin <code class="text-[#F3EEE6]/80">v0</code> does not include graphs.</p>
         </a>
 
-        <a href="https://github.com/sycamore-hq/crossr-harness" class="pillar-card group border border-white/10 bg-[#020617] rounded-3xl p-7 block">
-          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#eab308]/10 transition-colors">
-            <i class="fa-solid fa-layer-group text-2xl text-[#eab308]"></i>
+        <a href="https://github.com/sycamore-hq/crossr-harness" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
+          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-layer-group text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-harness</h4>
-          <p class="text-slate-400 text-[15px]">HARNESS-SPEC, bootstrap, dashboard. Pins <code class="text-slate-300">skills = v0-last-monolith</code>, <code class="text-slate-300">loops = v0</code>. Never overwrites <code class="text-slate-300">.opencode/</code>.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">HARNESS-SPEC, bootstrap, dashboard. Pins <code class="text-[#F3EEE6]/80">skills = v0-last-monolith</code>, <code class="text-[#F3EEE6]/80">loops = v0</code>. Never overwrites <code class="text-[#F3EEE6]/80">.opencode/</code>.</p>
         </a>
 
-        <a href="https://github.com/sycamore-hq/crossr-web-landing" class="pillar-card group border border-white/10 bg-[#020617] rounded-3xl p-7 block">
-          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#eab308]/10 transition-colors">
-            <i class="fa-solid fa-door-open text-2xl text-[#eab308]"></i>
+        <a href="https://github.com/sycamore-hq/crossr-web-landing" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
+          <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-door-open text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">this page</h4>
-          <p class="text-slate-400 text-[15px]">Public front door. Links out. No SKILL.md. No spec. No custom domain.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">Public front door. Links out. No SKILL.md. No spec. No custom domain.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS (featured = catalog featured) -->
   <section id="skills" class="max-w-screen-2xl mx-auto px-8 py-20" data-public-skill-count="18">
     <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-y-4">
       <div>
-        <div class="text-[#eab308] text-xs uppercase tracking-[3px] font-semibold mb-2">Featured</div>
+        <div class="text-[#C4A882] text-xs uppercase tracking-[3px] font-semibold mb-2">Featured</div>
         <h3 class="section-header text-5xl tracking-tighter">Catalog skills, not conductors</h3>
-        <p class="text-slate-400 mt-2">Featured subset from <code class="font-mono text-slate-300">docs/public-skills.json</code>. Conductors live in loops.</p>
+        <p class="text-[#F3EEE6]/60 mt-2">Featured subset from <code class="font-mono text-[#F3EEE6]/80">docs/public-skills.json</code>. Conductors live in loops.</p>
       </div>
-      <a href="https://github.com/sycamore-hq/crossr-skills/blob/main/docs/public-skills.json" class="text-[#eab308] hover:text-[#fde047] font-medium flex items-center gap-x-2 group">
+      <a href="https://github.com/sycamore-hq/crossr-skills/blob/main/docs/public-skills.json" class="text-[#C4A882] hover:text-[#F3EEE6] font-medium flex items-center gap-x-2 group">
         Full catalog (18)
         <i class="fa-solid fa-arrow-right transition group-hover:translate-x-0.5"></i>
       </a>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-writer</div><div class="text-xs text-white/50 mt-1">Foundation</div><div class="text-sm text-slate-400 mt-1">Core coding philosophy for every skill</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-writer</div><div class="text-xs text-white/50 mt-1">Rust Core</div><div class="text-sm text-slate-400 mt-1">Idiomatic stratified Rust</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-reviewer</div><div class="text-xs text-white/50 mt-1">Quality</div><div class="text-sm text-slate-400 mt-1">Ruthless code quality gate</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">agent-harness</div><div class="text-xs text-white/50 mt-1">Harness</div><div class="text-sm text-slate-400 mt-1">Stacked PRs, PETC, HTML-first</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">skill-evaluator</div><div class="text-xs text-white/50 mt-1">Meta</div><div class="text-sm text-slate-400 mt-1">Audit and remediate skills</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-writer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Foundation</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Core coding philosophy for every skill</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-writer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Rust Core</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Idiomatic stratified Rust</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-reviewer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Quality</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Ruthless code quality gate</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">agent-harness</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Harness</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Stacked PRs, PETC, HTML-first</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">skill-evaluator</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Meta</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Audit and remediate skills</div></div>
     </div>
 
-    <div class="mt-8 text-sm text-white/50">
-      Public allowlist SSOT: <a href="https://github.com/sycamore-hq/crossr-skills/blob/main/docs/public-skills.json" class="font-mono text-[#eab308]/90">crossr-skills/docs/public-skills.json</a>
-      · agentskills.io under <code class="font-mono text-[#eab308]/90">.agents/skills/</code>
+    <div class="mt-8 text-sm text-[#F3EEE6]/50">
+      Public allowlist SSOT: <a href="https://github.com/sycamore-hq/crossr-skills/blob/main/docs/public-skills.json" class="font-mono text-[#C4A882]">crossr-skills/docs/public-skills.json</a>
+      · agentskills.io under <code class="font-mono text-[#C4A882]">.agents/skills/</code>
     </div>
   </section>
 
-  <!-- GET STARTED -->
-  <section id="start" class="border-t border-white/10 bg-[#0b0f1e] py-20">
+  <section id="start" class="border-t border-[#C4A882]/15 bg-[#2E342C] py-20">
     <div class="max-w-screen-2xl mx-auto px-8">
       <div class="max-w-2xl">
-        <div class="text-[#eab308] uppercase text-xs tracking-[3px] font-semibold mb-3">One command</div>
+        <div class="text-[#C4A882] uppercase text-xs tracking-[3px] font-semibold mb-3">One command</div>
         <h3 class="section-header text-5xl tracking-tighter mb-6">Bootstrap from the harness, not the catalog.</h3>
-        <p class="text-xl text-slate-300 mb-8">Clone <a href="https://github.com/sycamore-hq/crossr-harness" class="text-[#eab308] hover:text-[#fde047]">crossr-harness</a> and run <code class="font-mono text-[#fde047]">harness-bootstrap</code>. It installs the pinned catalog and loops. The old <code class="font-mono">crossr-skills/scripts/harness-bootstrap</code> is a shim — it prints deprecation and exits 1.</p>
+        <p class="text-xl text-[#F3EEE6]/80 mb-8">Clone <a href="https://github.com/sycamore-hq/crossr-harness" class="text-[#C4A882] hover:text-[#F3EEE6]">crossr-harness</a> and run <code class="font-mono text-[#C4A882]">harness-bootstrap</code>. It installs the pinned catalog and loops. The old <code class="font-mono">crossr-skills/scripts/harness-bootstrap</code> is a shim — it prints deprecation and exits 1.</p>
       </div>
 
-      <div class="code-block rounded-3xl p-8 max-w-3xl font-mono text-sm leading-relaxed border border-white/10">
-        <div class="text-[#eab308] mb-1"># Clone and bootstrap a new project</div>
-        <div class="text-slate-200">git clone https://github.com/sycamore-hq/crossr-harness.git</div>
-        <div class="text-slate-200 mt-1">./crossr-harness/scripts/harness-bootstrap /path/to/your-project</div>
+      <div class="code-block rounded-3xl p-8 max-w-3xl font-mono text-sm leading-relaxed">
+        <div class="text-[#C4A882] mb-1"># Clone and bootstrap a new project</div>
+        <div class="text-[#F3EEE6]">git clone https://github.com/sycamore-hq/crossr-harness.git</div>
+        <div class="text-[#F3EEE6] mt-1">./crossr-harness/scripts/harness-bootstrap /path/to/your-project</div>
         
-        <div class="my-6 h-px bg-white/10"></div>
+        <div class="my-6 h-px bg-[#C4A882]/20"></div>
         
-        <div class="text-[#eab308] mb-1"># Pins (lockfile.toml)</div>
-        <div class="text-slate-200">skills = "v0-last-monolith"</div>
-        <div class="text-slate-200">loops  = "v0"</div>
-        <div class="text-slate-400 mt-3"># graphs/ live on loops main; not in pin v0; bootstrap does not copy them</div>
+        <div class="text-[#C4A882] mb-1"># Pins (lockfile.toml)</div>
+        <div class="text-[#F3EEE6]">skills = "v0-last-monolith"</div>
+        <div class="text-[#F3EEE6]">loops  = "v0"</div>
+        <div class="text-[#F3EEE6]/50 mt-3"># graphs/ live on loops main; not in pin v0; bootstrap does not copy them</div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-12">
+  <footer class="border-t border-[#C4A882]/15 py-12">
     <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-y-6 text-sm">
-      <div class="flex items-center gap-x-3 text-white/60">
-        <img src="brand/logo-icon.jpg" alt="" class="w-6 h-6 rounded opacity-70">
-        <span>CrossR · a Sycamore HQ door. Owns no law.</span>
+      <div class="flex items-center gap-x-3 text-[#F3EEE6]/60">
+        <img src="brand/mark.svg" alt="" class="w-6 h-6">
+        <span>CrossR · a Sycamore HQ door. Height enough.</span>
       </div>
 
-      <div class="flex flex-wrap gap-x-6 text-white/70">
-        <a href="https://github.com/sycamore-hq/crossr-skills" class="hover:text-[#eab308]">skills</a>
-        <a href="https://github.com/sycamore-hq/crossr-loops" class="hover:text-[#eab308]">loops</a>
-        <a href="https://github.com/sycamore-hq/crossr-harness" class="hover:text-[#eab308]">harness</a>
-        <a href="docs/" class="hover:text-[#eab308]">docs</a>
-        <a href="https://agentskills.io" class="hover:text-[#eab308]">agentskills.io</a>
+      <div class="flex flex-wrap gap-x-6 text-[#F3EEE6]/70">
+        <a href="https://github.com/sycamore-hq/crossr-skills" class="hover:text-[#C4A882]">skills</a>
+        <a href="https://github.com/sycamore-hq/crossr-loops" class="hover:text-[#C4A882]">loops</a>
+        <a href="https://github.com/sycamore-hq/crossr-harness" class="hover:text-[#C4A882]">harness</a>
+        <a href="docs/" class="hover:text-[#C4A882]">docs</a>
+        <a href="brand/guide.html" class="hover:text-[#C4A882]">mark</a>
+        <a href="https://agentskills.io" class="hover:text-[#C4A882]">agentskills.io</a>
       </div>
     </div>
   </footer>
