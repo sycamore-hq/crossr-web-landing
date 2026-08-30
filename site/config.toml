@@ -1,10 +1,9 @@
 # Zola configuration — CrossR public door
-# Copy truth (web-01). Palette still Eternal Forge until web-03. Host until web-05.
+# Host (base_url) still the leftover until web-05.
 base_url = "https://scull7.github.io/crossr-skills"
 title = "CrossR"
 description = "CrossR is three remotes under Sycamore HQ: a portable skill catalog, the AVRIL/AXEL/BRICK loops, and a project harness. This page is the door. It owns no law."
 
-# Generate a sitemap
 generate_sitemap = true
 
 [markdown]
@@ -15,8 +14,10 @@ highlight_theme = "css"
 author = "Nathan Sculli"
 github = "https://github.com/sycamore-hq/crossr-web-landing"
 repo = "crossr-web-landing"
-# Brand colors (Eternal Forge palette — replaced in web-03)
-abyss = "#020617"
-gold = "#eab308"
-flame = "#f59e0b"
-bright_flame = "#fde047"
+# House palette (web-03)
+well = "#171412"
+plaster = "#F3EEE6"
+mile = "#C4A882"
+fig = "#9E4E36"
+leaf = "#6A7348"
+canopy = "#2E342C"
