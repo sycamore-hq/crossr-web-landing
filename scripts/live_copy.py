@@ -122,13 +122,6 @@ def report_lines(html: str) -> tuple[str, ...]:
     return tuple(f"FAIL: {item}" for item in failures)
 
 
-def pin_surface_report(rel: str, text: str) -> tuple[str, ...]:
-    failures = pin_surface_failures(text)
-    if not failures:
-        return (f"{rel} pins are current",)
-    return tuple(f"FAIL: {rel}: {item}" for item in failures)
-
-
 def main(argv: list[str] | None = None) -> int:
     root = Path(__file__).resolve().parent.parent
     html = (root / "site" / "templates" / "index.html").read_text()
