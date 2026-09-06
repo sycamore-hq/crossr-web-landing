@@ -91,6 +91,17 @@ class PinAssignments(unittest.TestCase):
         self.assertIn(("skills", "v0-last-monolith"), assigns)
         self.assertIn(("loops", "v0"), assigns)
 
+    def test_backticked_bare_pin_drops_trailing_tick(self):
+        self.assertEqual(
+            live_copy.pin_assignments("`loops = v1-cards`"),
+            (("loops", "v1-cards"),),
+        )
+
+    def test_v0_token_skips_semver_and_still_hits_pin_v0(self):
+        self.assertIsNone(live_copy.V0_TOKEN.search("tag v0.1.0"))
+        self.assertIsNotNone(live_copy.V0_TOKEN.search("Pin v0 does not include graphs."))
+        self.assertIsNotNone(live_copy.V0_TOKEN.search("v0-last-monolith"))
+
     def test_pin_surface_fails_on_v0_and_passes_on_current(self):
         stale = 'catalog (`skills = "v0-last-monolith"`)\nloops = "v0"\n'
         clean = 'catalog (`skills = "v1-gan-layers"`)\nloops = "v1-cards"\n'
@@ -141,6 +152,11 @@ class GateWiring(unittest.TestCase):
         text = (ROOT / ".github" / "workflows" / "check.yml").read_text()
         self.assertIn("python3 -m unittest discover -s test -v", text)
         self.assertIn("scripts/live_copy.py", text)
+        self.assertIn("permissions:\n  contents: read", text)
+
+    def test_deploy_gate_runs_before_installs(self):
+        text = (ROOT / ".github" / "workflows" / "deploy-site.yml").read_text()
+        self.assertLess(text.find("Live-copy gate"), text.find("Install Zola"))
 
     def test_justfile_check_runs_the_suite(self):
         text = (ROOT / "justfile").read_text()

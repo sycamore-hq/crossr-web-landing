@@ -37,8 +37,8 @@ LOOPS_PIN = "v1-cards"
 PILL_NAME = re.compile(
     r'class="skill-pill[^"]*">\s*<div class="font-semibold">([^<]+)</div>'
 )
-PIN_ASSIGN = re.compile(r'(skills|loops)\s*=\s*"?([v][^\s"<]+)"?', re.I)
-V0_TOKEN = re.compile(r"\bv0\b")
+PIN_ASSIGN = re.compile(r'(skills|loops)\s*=\s*"?(v[\w.-]+)"?', re.I)
+V0_TOKEN = re.compile(r"\bv0\b(?!\.\d)")
 
 
 def token_hits(text: str, names: tuple[str, ...]) -> tuple[str, ...]:
