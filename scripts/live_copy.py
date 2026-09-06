@@ -40,6 +40,9 @@ PIN_SURFACES = (
     "book/src/getting-started/bootstrap.md",
 )
 
+# Old absolute claim. Bootstrap generates .opencode/agent/; unmarked files stay.
+RETIRED_PHRASES = ("Never overwrites",)
+
 PILL_NAME = re.compile(
     r'class="skill-pill[^"]*">\s*<div class="font-semibold">([^<]+)</div>'
 )
@@ -70,12 +73,19 @@ def assigned_values(assigns: tuple[tuple[str, str], ...], key: str) -> tuple[str
     return tuple(value for name, value in assigns if name == key)
 
 
+def phrase_hits(text: str, phrases: tuple[str, ...]) -> tuple[str, ...]:
+    return tuple(phrase for phrase in phrases if phrase in text)
+
+
 def html_failures(html: str) -> tuple[str, ...]:
     """5g defects on the Zola door. Empty means the live HTML is current."""
     failures: list[str] = []
     retired = token_hits(html, RETIRED_NAMES)
     if retired:
         failures.append("retired names: " + ", ".join(retired))
+    phrases = phrase_hits(html, RETIRED_PHRASES)
+    if phrases:
+        failures.append("retired phrases: " + ", ".join(phrases))
     pills = featured_pill_names(html)
     if pills != FEATURED_PILLS:
         failures.append(f"featured pills {pills} != {FEATURED_PILLS}")
@@ -94,6 +104,9 @@ def pin_surface_failures(text: str) -> tuple[str, ...]:
     failures: list[str] = []
     if V0_TOKEN.search(text):
         failures.append("live surface still names v0")
+    phrases = phrase_hits(text, RETIRED_PHRASES)
+    if phrases:
+        failures.append("retired phrases: " + ", ".join(phrases))
     assigns = pin_assignments(text)
     if SKILLS_PIN not in assigned_values(assigns, "skills"):
         failures.append(f"skills pin {SKILLS_PIN} missing")
@@ -119,16 +132,22 @@ def pin_surface_report(rel: str, text: str) -> tuple[str, ...]:
 def main(argv: list[str] | None = None) -> int:
     root = Path(__file__).resolve().parent.parent
     html = (root / "site" / "templates" / "index.html").read_text()
-    lines = list(report_lines(html))
-    failed = html_failures(html) != ()
-    for rel in PIN_SURFACES:
-        text = (root / rel).read_text()
-        lines.extend(pin_surface_report(rel, text))
-        if pin_surface_failures(text):
-            failed = True
-    for line in lines:
-        print(line)
-    return 1 if failed else 0
+    surfaces = [("live HTML copy", html_failures(html))]
+    surfaces.extend(
+        (f"{rel} pins", pin_surface_failures((root / rel).read_text()))
+        for rel in PIN_SURFACES
+    )
+    for label, failures in surfaces:
+        if not failures:
+            print(
+                f"{label} are current"
+                if label.endswith("pins")
+                else f"{label} is current"
+            )
+            continue
+        for item in failures:
+            print(f"FAIL: {label}: {item}")
+    return 1 if any(failures for _, failures in surfaces) else 0
 
 
 if __name__ == "__main__":
