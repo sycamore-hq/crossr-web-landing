@@ -10,15 +10,15 @@ git clone https://github.com/sycamore-hq/crossr-harness.git
 Pins (see the harness `lockfile.toml`):
 
 ```
-skills = "v0-last-monolith"
-loops  = "v0"
+skills = "v1-gan-layers"
+loops  = "v1-cards"
 ```
 
-Full install copies catalog skills, loop conductors + personas + `/avril` `/axel`, and harness templates. Never overwrites existing `.opencode/`. No git submodules.
+Full install copies catalog skills, loop conductors + personas + `/avril` `/axel`, and harness templates. Generates `.opencode/agent/` from persona sources; unmarked files stay. No git submodules.
 
 `--process-only` writes tracking files without copying skills (how the three product remotes consume the harness).
 
-`graphs/` live on [`crossr-loops` `main`](https://github.com/sycamore-hq/crossr-loops/tree/main/graphs). They are **not** in pin `v0`. Bootstrap does not copy them. Topology only — if a graph and a `SKILL.md` disagree, the skill wins.
+`graphs/` live on [`crossr-loops` `main`](https://github.com/sycamore-hq/crossr-loops/tree/main/graphs). They are in pin `v1-cards`. Bootstrap does not copy them. Topology only — if a graph and a `SKILL.md` disagree, the skill wins.
 
 The old `crossr-skills/scripts/harness-bootstrap` is a shim: it prints `deprecated: use sycamore-hq/crossr-harness` and exits 1.
 

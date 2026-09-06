@@ -142,9 +142,23 @@ class LiveTree(unittest.TestCase):
     def test_door_html_has_no_5g_failures(self):
         html = (ROOT / "site" / "templates" / "index.html").read_text()
         self.assertEqual(live_copy.html_failures(html), ())
+        self.assertNotIn("Never overwrites", html)
 
     def test_cli_exits_zero_on_current_door(self):
         self.assertEqual(live_copy.main([]), 0)
+
+    def test_readme_sibling_list_has_current_pins(self):
+        text = (ROOT / "README.md").read_text()
+        self.assertEqual(live_copy.pin_surface_failures(text), ())
+
+    def test_book_bootstrap_has_current_pins(self):
+        text = (ROOT / "book" / "src" / "getting-started" / "bootstrap.md").read_text()
+        self.assertEqual(live_copy.pin_surface_failures(text), ())
+        self.assertNotIn("Never overwrites", text)
+
+    def test_history_is_not_a_live_pin_surface(self):
+        self.assertNotIn("MIGRATION.md", live_copy.PIN_SURFACES)
+        self.assertNotIn("docs/plans/crossr-web-landing-cut.md", live_copy.PIN_SURFACES)
 
 
 class GateWiring(unittest.TestCase):

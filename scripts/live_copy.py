@@ -34,6 +34,12 @@ FEATURED_PILLS = (
 SKILLS_PIN = "v1-gan-layers"
 LOOPS_PIN = "v1-cards"
 
+# Live pin surfaces. Charter freeze and MIGRATION.md are history, not these.
+PIN_SURFACES = (
+    "README.md",
+    "book/src/getting-started/bootstrap.md",
+)
+
 PILL_NAME = re.compile(
     r'class="skill-pill[^"]*">\s*<div class="font-semibold">([^<]+)</div>'
 )
@@ -103,14 +109,26 @@ def report_lines(html: str) -> tuple[str, ...]:
     return tuple(f"FAIL: {item}" for item in failures)
 
 
+def pin_surface_report(rel: str, text: str) -> tuple[str, ...]:
+    failures = pin_surface_failures(text)
+    if not failures:
+        return (f"{rel} pins are current",)
+    return tuple(f"FAIL: {rel}: {item}" for item in failures)
+
+
 def main(argv: list[str] | None = None) -> int:
     root = Path(__file__).resolve().parent.parent
-    path = root / "site" / "templates" / "index.html"
-    html = path.read_text()
-    lines = report_lines(html)
+    html = (root / "site" / "templates" / "index.html").read_text()
+    lines = list(report_lines(html))
+    failed = html_failures(html) != ()
+    for rel in PIN_SURFACES:
+        text = (root / rel).read_text()
+        lines.extend(pin_surface_report(rel, text))
+        if pin_surface_failures(text):
+            failed = True
     for line in lines:
         print(line)
-    return 0 if html_failures(html) == () else 1
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
