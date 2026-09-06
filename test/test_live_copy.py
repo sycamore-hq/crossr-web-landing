@@ -110,6 +110,11 @@ class PinAssignments(unittest.TestCase):
         self.assertTrue(any("v0" in item for item in stale_fails))
         self.assertEqual(live_copy.pin_surface_failures(clean), ())
 
+    def test_never_overwrites_is_a_retired_phrase(self):
+        hits = live_copy.pin_surface_failures("Never overwrites existing .opencode/")
+        self.assertTrue(hits)
+        self.assertTrue(any("Never overwrites" in item for item in hits))
+
 
 class HtmlFailures(unittest.TestCase):
     def test_stale_html_fails_every_5g_check(self):
@@ -122,6 +127,7 @@ class HtmlFailures(unittest.TestCase):
         self.assertIn("v0", joined)
         self.assertIn("v1-gan-layers", joined)
         self.assertIn("v1-cards", joined)
+        self.assertIn("Never overwrites", joined)
 
     def test_clean_html_has_no_failures(self):
         self.assertEqual(live_copy.html_failures(CLEAN_HTML), ())
@@ -142,7 +148,6 @@ class LiveTree(unittest.TestCase):
     def test_door_html_has_no_5g_failures(self):
         html = (ROOT / "site" / "templates" / "index.html").read_text()
         self.assertEqual(live_copy.html_failures(html), ())
-        self.assertNotIn("Never overwrites", html)
 
     def test_cli_exits_zero_on_current_door(self):
         self.assertEqual(live_copy.main([]), 0)
@@ -150,11 +155,17 @@ class LiveTree(unittest.TestCase):
     def test_readme_sibling_list_has_current_pins(self):
         text = (ROOT / "README.md").read_text()
         self.assertEqual(live_copy.pin_surface_failures(text), ())
+        self.assertIn("`main`; pins `skills = \"v1-gan-layers\"`", text)
 
     def test_book_bootstrap_has_current_pins(self):
         text = (ROOT / "book" / "src" / "getting-started" / "bootstrap.md").read_text()
         self.assertEqual(live_copy.pin_surface_failures(text), ())
-        self.assertNotIn("Never overwrites", text)
+
+    def test_door_and_book_agree_graphs_are_in_v1_cards(self):
+        html = (ROOT / "site" / "templates" / "index.html").read_text()
+        book = (ROOT / "book" / "src" / "getting-started" / "bootstrap.md").read_text()
+        self.assertIn("in pin v1-cards", html)
+        self.assertIn("in pin `v1-cards`", book)
 
     def test_history_is_not_a_live_pin_surface(self):
         self.assertNotIn("MIGRATION.md", live_copy.PIN_SURFACES)
