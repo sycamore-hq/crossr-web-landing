@@ -211,7 +211,7 @@
             <i class="fa-solid fa-book text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-skills</h4>
-          <p class="text-[#F3EEE6]/60 text-[15px]">Portable catalog. 18 public skills. BRICK stages, writers, reviewers, <code class="text-[#F3EEE6]/80">agent-harness</code>, <code class="text-[#F3EEE6]/80">skill-evaluator</code>. Load without buying CrossR process.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">Portable catalog. 18 public skills. <code class="text-[#F3EEE6]/80">code-writer</code>, language books (rust, ocaml), activity gates (code-review, testing, architecture). Load without buying CrossR process.</p>
         </a>
 
         <a href="https://github.com/sycamore-hq/crossr-loops" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
@@ -219,7 +219,7 @@
             <i class="fa-solid fa-stream text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-loops</h4>
-          <p class="text-[#F3EEE6]/60 text-[15px]">AVRIL, AXEL, BRICK conductor, rust-team-lead. JSON graphs under <code class="text-[#F3EEE6]/80">graphs/</code> — topology, not a runtime. Pin <code class="text-[#F3EEE6]/80">v0</code> does not include graphs.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">AVRIL, AXEL, BRICK conductor, code-gan graph. JSON graphs under <code class="text-[#F3EEE6]/80">graphs/</code> — topology, not a runtime.</p>
         </a>
 
         <a href="https://github.com/sycamore-hq/crossr-harness" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
@@ -227,7 +227,7 @@
             <i class="fa-solid fa-layer-group text-2xl text-[#C4A882]"></i>
           </div>
           <h4 class="font-semibold text-xl mb-2 tracking-tight">crossr-harness</h4>
-          <p class="text-[#F3EEE6]/60 text-[15px]">HARNESS-SPEC, bootstrap, dashboard. Pins <code class="text-[#F3EEE6]/80">skills = v0-last-monolith</code>, <code class="text-[#F3EEE6]/80">loops = v0</code>. Never overwrites <code class="text-[#F3EEE6]/80">.opencode/</code>.</p>
+          <p class="text-[#F3EEE6]/60 text-[15px]">HARNESS-SPEC, bootstrap, dashboard. Pins <code class="text-[#F3EEE6]/80">skills = v1-gan-layers</code>, <code class="text-[#F3EEE6]/80">loops = v1-cards</code>. Generates <code class="text-[#F3EEE6]/80">.opencode/agent/</code> from persona sources; unmarked files stay.</p>
         </a>
 
         <a href="https://github.com/sycamore-hq/crossr-web-landing" class="pillar-card group border border-[#C4A882]/15 bg-[#171412] rounded-3xl p-7 block">
@@ -256,8 +256,8 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
       <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-writer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Foundation</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Core coding philosophy for every skill</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-writer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Rust Core</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Idiomatic stratified Rust</div></div>
-      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust-code-reviewer</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Quality</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Ruthless code quality gate</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Rust Book</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Situational Rules + How, generated RULES.md</div></div>
+      <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-review</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Quality</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Ruthless code quality gate</div></div>
       <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">agent-harness</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Harness</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Stacked PRs, PETC, HTML-first</div></div>
       <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">skill-evaluator</div><div class="text-xs text-[#F3EEE6]/50 mt-1">Meta</div><div class="text-sm text-[#F3EEE6]/60 mt-1">Audit and remediate skills</div></div>
     </div>
@@ -284,9 +284,9 @@
         <div class="my-6 h-px bg-[#C4A882]/20"></div>
         
         <div class="text-[#C4A882] mb-1"># Pins (lockfile.toml)</div>
-        <div class="text-[#F3EEE6]">skills = "v0-last-monolith"</div>
-        <div class="text-[#F3EEE6]">loops  = "v0"</div>
-        <div class="text-[#F3EEE6]/50 mt-3"># graphs/ live on loops main; not in pin v0; bootstrap does not copy them</div>
+        <div class="text-[#F3EEE6]">skills = "v1-gan-layers"</div>
+        <div class="text-[#F3EEE6]">loops  = "v1-cards"</div>
+        <div class="text-[#F3EEE6]/50 mt-3"># graphs/ live on loops; topology, not a runtime</div>
       </div>
     </div>
   </section>

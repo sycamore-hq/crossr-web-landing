@@ -52,6 +52,9 @@ jobs:
           cd site
           zola build --force
 
+      - name: Live-copy gate
+        run: python3 -m unittest discover -s test -v && python3 scripts/live_copy.py
+
       - name: Verify docs landed
         run: |
           test -f site/public/docs/index.html

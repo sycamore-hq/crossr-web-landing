@@ -1,6 +1,12 @@
 default:
     @just --list
 
+test:
+    python3 -m unittest discover -s test -v
+
+check: test
+    python3 scripts/live_copy.py
+
 # Marketing door (Zola)
 site-build:
     cd site && zola build --force
