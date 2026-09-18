@@ -32,16 +32,16 @@ STALE_HTML = """
 <div>loops  = "v0"</div>
 """
 
-CLEAN_HTML = """
+CLEAN_HTML = f"""
 <p>AVRIL, AXEL, BRICK conductor, code-gan graph. Topology, not a runtime.</p>
-<p>Pins skills = v1-gan-layers, loops = v1-cards. Generates .opencode/agent/.</p>
+<p>Pins skills = {live_copy.SKILLS_PIN}, loops = {live_copy.LOOPS_PIN}. Generates .opencode/agent/.</p>
 <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-writer</div></div>
 <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">rust</div></div>
 <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">code-review</div></div>
 <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">agent-harness</div></div>
 <div class="skill-pill rounded-2xl px-5 py-4"><div class="font-semibold">skill-evaluator</div></div>
-<div>skills = "v1-gan-layers"</div>
-<div>loops  = "v1-cards"</div>
+<div>skills = "{live_copy.SKILLS_PIN}"</div>
+<div>loops  = "{live_copy.LOOPS_PIN}"</div>
 """
 
 
@@ -104,7 +104,8 @@ class PinAssignments(unittest.TestCase):
 
     def test_pin_surface_fails_on_v0_and_passes_on_current(self):
         stale = 'catalog (`skills = "v0-last-monolith"`)\nloops = "v0"\n'
-        clean = 'catalog (`skills = "v1-gan-layers"`)\nloops = "v1-cards"\n'
+        clean = (f'catalog (`skills = "{live_copy.SKILLS_PIN}"`)\n'
+                 f'loops = "{live_copy.LOOPS_PIN}"\n')
         stale_fails = live_copy.pin_surface_failures(stale)
         self.assertTrue(stale_fails)
         self.assertTrue(any("v0" in item for item in stale_fails))
@@ -125,8 +126,8 @@ class HtmlFailures(unittest.TestCase):
         self.assertIn("rust-code-writer", joined)
         self.assertIn("featured pills", joined)
         self.assertIn("v0", joined)
-        self.assertIn("v1-gan-layers", joined)
-        self.assertIn("v1-cards", joined)
+        self.assertIn(live_copy.SKILLS_PIN, joined)
+        self.assertIn(live_copy.LOOPS_PIN, joined)
         self.assertIn("Never overwrites", joined)
 
     def test_clean_html_has_no_failures(self):
@@ -155,17 +156,17 @@ class LiveTree(unittest.TestCase):
     def test_readme_sibling_list_has_current_pins(self):
         text = (ROOT / "README.md").read_text()
         self.assertEqual(live_copy.pin_surface_failures(text), ())
-        self.assertIn("`main`; pins `skills = \"v1-gan-layers\"`", text)
+        self.assertIn(f'`main`; pins `skills = "{live_copy.SKILLS_PIN}"`', text)
 
     def test_book_bootstrap_has_current_pins(self):
         text = (ROOT / "book" / "src" / "getting-started" / "bootstrap.md").read_text()
         self.assertEqual(live_copy.pin_surface_failures(text), ())
 
-    def test_door_and_book_agree_graphs_are_in_v1_cards(self):
+    def test_door_and_book_agree_which_pin_holds_graphs(self):
         html = (ROOT / "site" / "templates" / "index.html").read_text()
         book = (ROOT / "book" / "src" / "getting-started" / "bootstrap.md").read_text()
-        self.assertIn("in pin v1-cards", html)
-        self.assertIn("in pin `v1-cards`", book)
+        self.assertIn(f"in pin {live_copy.LOOPS_PIN}", html)
+        self.assertIn(f"in pin `{live_copy.LOOPS_PIN}`", book)
 
     def test_history_is_not_a_live_pin_surface(self):
         self.assertNotIn("MIGRATION.md", live_copy.PIN_SURFACES)

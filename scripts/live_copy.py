@@ -30,9 +30,11 @@ FEATURED_PILLS = (
     "skill-evaluator",
 )
 
-# Consumer pins on harness main until 5f. Not the 5d/5e tag names.
-SKILLS_PIN = "v1-gan-layers"
-LOOPS_PIN = "v1-cards"
+# The pins crossr-harness main declares. This door advertises what a new
+# consumer would actually bootstrap, so it tracks that lockfile — not the
+# newest tag in either catalog, and not what this repo last happened to say.
+SKILLS_PIN = "v1-board"
+LOOPS_PIN = "v1-board-consumers"
 
 # Live pin surfaces. Charter freeze and MIGRATION.md are history, not these.
 PIN_SURFACES = (
