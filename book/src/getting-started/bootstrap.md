@@ -16,7 +16,7 @@ loops  = "v1-cards"
 
 Full install copies catalog skills, loop conductors + personas + `/avril` `/axel`, and harness templates. Generates `.opencode/agent/` from persona sources; unmarked files stay. No git submodules.
 
-`--process-only` writes tracking files without copying skills (how the three product remotes consume the harness).
+`--process-only` writes the process files — `AGENTS.md`, `dashboard.config.json`, `justfile`, `lockfile.toml` — without copying skills (how the three product remotes consume the harness). It writes no tracking file: work state lives on the disclosed board, not in the repo.
 
 `graphs/` live on [`crossr-loops` `main`](https://github.com/sycamore-hq/crossr-loops/tree/main/graphs). They are in pin `v1-cards`. Bootstrap does not copy them. Topology only — if a graph and a `SKILL.md` disagree, the skill wins.
 
