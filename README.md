@@ -9,9 +9,9 @@ The leftover https://sycamore-hq.github.io/crossr-skills/ is replaced by a moved
 
 See [MIGRATION.md](MIGRATION.md).
 
-- [crossr-skills](https://github.com/sycamore-hq/crossr-skills) — catalog (`skills = "v1-board"`)
-- [crossr-loops](https://github.com/sycamore-hq/crossr-loops) — AVRIL / AXEL / BRICK / GAN (`loops = "v1-board-consumers"`)
-- [crossr-harness](https://github.com/sycamore-hq/crossr-harness) — spec, bootstrap, dashboard (`main`; pins `skills = "v1-board"`, `loops = "v1-board-consumers"`)
+- [crossr-skills](https://github.com/sycamore-hq/crossr-skills) — catalog (`skills = "v1-model-ask"`)
+- [crossr-loops](https://github.com/sycamore-hq/crossr-loops) — AVRIL / AXEL / BRICK / GAN (`loops = "v1-model-ask-consumers"`)
+- [crossr-harness](https://github.com/sycamore-hq/crossr-harness) — spec, bootstrap, dashboard (`main`; pins `skills = "v1-model-ask"`, `loops = "v1-model-ask-consumers"`)
 
 Split charter: [`skills-loops-harness-split.html`](https://github.com/sycamore-hq/crossr-skills/blob/main/docs/plans/skills-loops-harness-split.html).
 
